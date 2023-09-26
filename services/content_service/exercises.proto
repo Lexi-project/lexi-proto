@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package content;
+
+
+enum ExersiceType {
+    FILL_BLANK = 0;
+    YES_NO = 1;
+}
+
+message ConversationContent {
+    string personName = 1;
+    string quote = 2;
+}
+
+message FillBlankExerciseItem {
+    int64 index = 1;
+    int64 length = 2;
+    string hint = 3;
+    string answer = 4;
+}
+
+message FillBlankExercise {
+    repeated FillBlankExerciseItem replacements = 1;
+}
+
+message GetExerciseContentRequest {
+    ExersiceType exerciseType = 1;
+    string context = 2;
+    string level = 3;
+    bool isColloquial = 4;
+    repeated string characters = 5;
+}
+
+message GetExerciseContentResponse {
+    int64 id = 1;
+    string createdAt = 2;
+    repeated ConversationContent content = 3;
+    FillBlankExercise exerciseContent = 4;
+}
+
+service ExerciseContentService {
+    rpc GetExerciseContent(GetExerciseContentRequest) returns (GetExerciseContentResponse);
+}
