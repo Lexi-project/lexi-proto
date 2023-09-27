@@ -20,8 +20,12 @@ message FillBlankExerciseItem {
     string answer = 4;
 }
 
+message FillBlankExerciseItemArray {
+    repeated FillBlankExerciseItem items = 1;
+}
+
 message FillBlankExercise {
-    repeated FillBlankExerciseItem replacements = 1;
+    repeated FillBlankExerciseItemArray replacements = 1;
 }
 
 message GetExerciseContentRequest {
