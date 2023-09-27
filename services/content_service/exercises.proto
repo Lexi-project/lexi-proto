@@ -4,8 +4,8 @@ package content;
 
 
 enum ExersiceType {
-    FILL_BLANK = 1;
-    YES_NO = 2;
+    FILL_BLANK = 0;
+    YES_NO = 1;
 }
 
 message ConversationContent {
