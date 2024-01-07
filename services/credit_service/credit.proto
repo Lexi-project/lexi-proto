@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package credit;
+
+message BorrowCreditRequest {
+    int32 credits = 1;
+    string token = 2;
+}
+
+message BorrowCreditResponse {
+    int32 transaction_id = 1;
+}
+
+message RollbackCreditRequest {
+    int32 transaction_id = 1;
+}
+
+message RollbackCreditResponse {
+    bool is_success = 1;
+}
+
+message CommitCreditRequest {
+    int32 transaction_id = 1;
+}
+
+message CommitCreditResponse {
+    bool is_success = 1;
+}
+
+
+service CreditService {
+    rpc BorrowCredit(BorrowCreditRequest) returns (BorrowCreditResponse);
+    rpc RollbackCredit(RollbackCreditRequest) returns (RollbackCreditResponse);
+    rpc CommitCredit(CommitCreditRequest) returns (CommitCreditResponse);
+}
