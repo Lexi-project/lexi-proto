@@ -13,6 +13,7 @@ message BorrowCreditResponse {
 
 message RollbackCreditRequest {
     int32 transaction_id = 1;
+    string token = 2;
 }
 
 message RollbackCreditResponse {
